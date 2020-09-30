@@ -23,4 +23,6 @@ public interface TeacherDao {
     @Delete
     void delete(Teacher teacher);
 
+    @Query("UPDATE Teacher SET firstname = :fname, lastname = :lname WHERE teacher_id == :key")
+    void update(int key, String fname, String lname);
 }

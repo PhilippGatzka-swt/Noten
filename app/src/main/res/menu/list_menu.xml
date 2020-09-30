@@ -6,4 +6,8 @@
         android:id="@+id/item_delete"
         android:title="@string/loeschen"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/item_edit"
+        android:title="@string/bearbeiten"
+        app:showAsAction="never" />
 </menu>
