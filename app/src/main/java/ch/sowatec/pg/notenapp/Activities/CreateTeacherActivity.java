@@ -1,4 +1,4 @@
-package ch.sowatec.pg.notenapp;
+package ch.sowatec.pg.notenapp.Activities;
 
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import ch.sowatec.pg.notenapp.Database.Data.Teacher;
 import ch.sowatec.pg.notenapp.Database.DatabaseAdapter;
 import ch.sowatec.pg.notenapp.Database.DatabaseClient;
+import ch.sowatec.pg.notenapp.R;
 
 public class CreateTeacherActivity extends AppCompatActivity {
     /* XML VIEW COMPONENTS */

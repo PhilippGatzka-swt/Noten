@@ -1,4 +1,4 @@
-package ch.sowatec.pg.notenapp;
+package ch.sowatec.pg.notenapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import ch.sowatec.pg.notenapp.R;
 
 public class TeacherOptionsActivity extends AppCompatActivity {
 

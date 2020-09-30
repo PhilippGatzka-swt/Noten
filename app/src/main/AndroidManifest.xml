@@ -9,12 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TeacherListActivity"></activity>
-        <activity android:name=".CreateTeacherActivity" />
+        <activity android:name=".SubjectListActivity"></activity>
+        <activity android:name=".Activities.CreateSubjectActivity" />
         <activity
-            android:name=".TeacherOptionsActivity"
+            android:name=".Activities.SubjectOptionsActivity"
+            android:label="@string/faecher" />
+        <activity android:name=".Activities.TeacherListActivity" />
+        <activity android:name=".Activities.CreateTeacherActivity" />
+        <activity
+            android:name=".Activities.TeacherOptionsActivity"
             android:label="@string/lehrpersonen" />
-        <activity android:name=".MenuActivity">
+        <activity android:name=".Activities.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

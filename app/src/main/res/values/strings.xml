@@ -13,4 +13,6 @@
     <string name="hinzufügen">Hinzufügen</string>
     <string name="loeschen">Löschen</string>
     <string name="bearbeiten">Bearbeiten</string>
+    <string name="fach">Fach</string>
+    <string name="lehrperson">Lehrperson</string>
 </resources>

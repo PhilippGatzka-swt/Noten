@@ -1,13 +1,12 @@
-package ch.sowatec.pg.notenapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package ch.sowatec.pg.notenapp.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import kotlin.NotImplementedError;
+import androidx.appcompat.app.AppCompatActivity;
+
+import ch.sowatec.pg.notenapp.R;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -18,11 +17,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void buttonactionStartFaecher(View view) {
-        Log.e("buttonactionStartFaecher", "Function has not been implemented yet");
+        Intent i = new Intent(this, SubjectOptionsActivity.class);
+        startActivity(i);
     }
 
     public void buttonactionStartNoten(View view) {
-        Log.e("buttonactionStartNoten", "Function has not been implemented yet");
+
     }
 
     public void buttonactionStartLehrpersonen(View view) {

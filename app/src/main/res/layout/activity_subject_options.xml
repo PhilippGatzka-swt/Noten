@@ -4,55 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.TeacherOptionsActivity">
+    tools:context=".Activities.SubjectOptionsActivity">
 
     <ImageButton
         android:id="@+id/button_add"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/lehrperson_hinzufuegen"
+        android:onClick="buttonactionStartAddFach"
         android:padding="3dp"
         android:src="@drawable/icon_add"
-        android:onClick="buttonactionStartAddLehrperson"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/lehrperson_hinzufuegen" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_list"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/lehpersonen_anzeigen"
+        android:onClick="buttonactionStartViewFach"
         android:padding="3dp"
         android:src="@drawable/icon_listview"
-        android:onClick="buttonactionStartViewLehrperson"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@string/lehpersonen_anzeigen" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/button_export"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/exportieren"
+        android:onClick="buttonactionStartExport"
         android:padding="3dp"
         android:src="@drawable/icon_export"
-        android:onClick="buttonactionStartExport"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_add"
-        android:contentDescription="@string/exportieren" />
+        app:layout_constraintTop_toBottomOf="@id/button_add" />
+
     <ImageButton
         android:id="@+id/button_import"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/importieren"
+        android:onClick="buttonactionStartImport"
         android:padding="3dp"
         android:src="@drawable/icon_import"
-        android:onClick="buttonactionStartImport"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/button_list"
-        android:contentDescription="@string/importieren" />
-
+        app:layout_constraintTop_toBottomOf="@id/button_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

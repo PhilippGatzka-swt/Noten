@@ -1,4 +1,4 @@
-package ch.sowatec.pg.notenapp;
+package ch.sowatec.pg.notenapp.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -21,6 +21,7 @@ import java.util.List;
 import ch.sowatec.pg.notenapp.Database.Data.Teacher;
 import ch.sowatec.pg.notenapp.Database.DatabaseAdapter;
 import ch.sowatec.pg.notenapp.Database.DatabaseClient;
+import ch.sowatec.pg.notenapp.R;
 
 public class TeacherListActivity extends AppCompatActivity {
     /* XML VIEW COMPONENTS */
