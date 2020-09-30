@@ -1,10 +1,11 @@
 package ch.sowatec.pg.notenapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class TeacherOptionsActivity extends AppCompatActivity {
 
@@ -15,7 +16,8 @@ public class TeacherOptionsActivity extends AppCompatActivity {
     }
 
     public void buttonactionStartAddLehrperson(View view) {
-        Log.e("buttonactionStartAddLehrperson","Function has not been implemented yet");
+        Intent i = new Intent(this, CreateTeacherActivity.class);
+        startActivity(i);
     }
 
     public void buttonactionStartImport(View view) {
