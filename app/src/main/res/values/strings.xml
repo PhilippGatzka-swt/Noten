@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Notenapp</string>
+    <string name="noten">Noten</string>
+    <string name="faecher">Fächer</string>
+    <string name="lehrpersonen">Lehrpersonen</string>
+    <string name="lehrperson_hinzufuegen">Lehrperson hinzufügen</string>
+    <string name="lehpersonen_anzeigen">Lehpersonen anzeigen</string>
+    <string name="exportieren">Exportieren</string>
+    <string name="importieren">Importieren</string>
+    <string name="vorname">Vorname</string>
+    <string name="nachname">Nachname</string>
+    <string name="fertig">Fertig</string>
+    <string name="hinzufügen">Hinzufügen</string>
 </resources>
