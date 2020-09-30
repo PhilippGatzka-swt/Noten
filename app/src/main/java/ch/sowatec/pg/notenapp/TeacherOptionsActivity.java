@@ -29,6 +29,7 @@ public class TeacherOptionsActivity extends AppCompatActivity {
     }
 
     public void buttonactionStartViewLehrperson(View view) {
-        Log.e("buttonactionStartAddLehrperson","Function has not been implemented yet");
+        Intent i = new Intent(this, TeacherListActivity.class);
+        startActivity(i);
     }
 }

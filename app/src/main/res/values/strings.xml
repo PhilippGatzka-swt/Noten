@@ -11,4 +11,5 @@
     <string name="nachname">Nachname</string>
     <string name="fertig">Fertig</string>
     <string name="hinzufügen">Hinzufügen</string>
+    <string name="loeschen">Löschen</string>
 </resources>
