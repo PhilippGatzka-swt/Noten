@@ -31,6 +31,11 @@ public class CreateSubjectActivity extends AppCompatActivity {
         public void run() {
             DatabaseClient.getInstance(CreateSubjectActivity.this).getAppDatabase().subjectDao().insert(subject);
         }
+    }, new Runnable() {
+        @Override
+        public void run() {
+            finish();
+        }
     });
     private DatabaseAdapter teachersAdapter = new DatabaseAdapter(new Runnable() {
         @Override
@@ -69,7 +74,7 @@ public class CreateSubjectActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_add) {
             buildSubject();
             insertAdapter.execute();
-            finish();
+
         }
 
         return super.onOptionsItemSelected(item);

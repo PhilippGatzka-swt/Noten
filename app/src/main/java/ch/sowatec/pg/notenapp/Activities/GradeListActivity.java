@@ -1,4 +1,4 @@
-package ch.sowatec.pg.notenapp;
+package ch.sowatec.pg.notenapp.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -18,34 +19,36 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
+import ch.sowatec.pg.notenapp.Database.Data.Grade;
 import ch.sowatec.pg.notenapp.Database.Data.Subject;
-import ch.sowatec.pg.notenapp.Database.Data.Teacher;
 import ch.sowatec.pg.notenapp.Database.DatabaseAdapter;
 import ch.sowatec.pg.notenapp.Database.DatabaseClient;
+import ch.sowatec.pg.notenapp.R;
 
-public class SubjectListActivity extends AppCompatActivity {
+public class GradeListActivity extends AppCompatActivity {
 
-    private LinearLayout listview_subjects;
-    private Subject subject;
-    private String newName;
+    private LinearLayout listview_grades;
+    private Grade grade;
+    private float note;
+    private String date;
     private DatabaseAdapter deleteAdapter = new DatabaseAdapter(new Runnable() {
         @Override
         public void run() {
             Log.e("TAG", "DELETED TEACHER");
-            DatabaseClient.getInstance(SubjectListActivity.this).getAppDatabase().subjectDao().delete(subject);
+            DatabaseClient.getInstance(GradeListActivity.this).getAppDatabase().gradeDao().delete(grade);
         }
     });
     private DatabaseAdapter updateAdapter = new DatabaseAdapter(new Runnable() {
         @Override
         public void run() {
-            DatabaseClient.getInstance(SubjectListActivity.this).getAppDatabase().subjectDao().update(subject.subject_id, newName);
+            DatabaseClient.getInstance(GradeListActivity.this).getAppDatabase().gradeDao().update(grade.grade_id, note, date);
         }
     });
-    private List<Subject> subjectList;
+    private List<Grade> gradesList;
     private DatabaseAdapter databaseAdapter = new DatabaseAdapter(new Runnable() {
         @Override
         public void run() {
-            subjectList = DatabaseClient.getInstance(SubjectListActivity.this).getAppDatabase().subjectDao().getAll();
+            gradesList = DatabaseClient.getInstance(GradeListActivity.this).getAppDatabase().gradeDao().getAll();
         }
     }, new Runnable() {
         @Override
@@ -53,30 +56,23 @@ public class SubjectListActivity extends AppCompatActivity {
             fillList();
         }
     });
-    private List<Teacher> teacherList;
-    private DatabaseAdapter teachersAdapter = new DatabaseAdapter(new Runnable() {
+
+    private List<Subject> subjectList;
+    private DatabaseAdapter subjectsAdapter = new DatabaseAdapter(new Runnable() {
         @Override
         public void run() {
-            teacherList = DatabaseClient.getInstance(SubjectListActivity.this).getAppDatabase().teacherDao().getAll();
+            subjectList = DatabaseClient.getInstance(GradeListActivity.this).getAppDatabase().subjectDao().getAll();
         }
     });
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subject_list);
-        listview_subjects = findViewById(R.id.listview_subjects);
-        teachersAdapter.execute();
-        databaseAdapter.execute();
-    }
 
     private void fillList() {
-        for (final Subject subject : subjectList) {
+        for (final Grade grade2 : gradesList) {
             TextView listItem = new TextView(this);
-            listItem.setText(subject.toString());
+            listItem.setText(grade2.toString());
             listItem.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
             listItem.setPadding(10, 10, 10, 10);
-            listview_subjects.addView(listItem);
+            listview_grades.addView(listItem);
         }
     }
 
@@ -87,20 +83,29 @@ public class SubjectListActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grade_list);
+        listview_grades = findViewById(R.id.listview_grades);
+        subjectsAdapter.execute();
+        databaseAdapter.execute();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        ArrayAdapter<Subject> arrayAdapter = new ArrayAdapter<Subject>(SubjectListActivity.this, R.layout.support_simple_spinner_dropdown_item, subjectList);
-        final Spinner spinner = new Spinner(SubjectListActivity.this);
+        ArrayAdapter<Grade> arrayAdapter = new ArrayAdapter<Grade>(GradeListActivity.this, R.layout.support_simple_spinner_dropdown_item, gradesList);
+        final Spinner spinner = new Spinner(GradeListActivity.this);
         spinner.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         spinner.setAdapter(arrayAdapter);
         if (item.getItemId() == R.id.item_delete) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(SubjectListActivity.this)
+            AlertDialog.Builder builder = new AlertDialog.Builder(GradeListActivity.this)
                     .setView(spinner)
                     .setTitle("Löschen")
                     .setMessage("Welchen Eintrag wollen sie löschen?")
                     .setPositiveButton("Löschen", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            subject = (Subject) spinner.getSelectedItem();
+                            grade = (Grade) spinner.getSelectedItem();
                             deleteAdapter.execute();
                             refresh();
                         }
@@ -109,28 +114,32 @@ public class SubjectListActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.item_edit) {
             LinearLayout container = new LinearLayout(this);
             LinearLayout line1 = new LinearLayout(this);
-            TextView _name = new TextView(this);
-            final EditText name = new EditText(this);
-            _name.setText("Fach");
-            _name.setPadding(30, 0, 20, 0);
-            _name.setMinWidth(450);
-            ArrayAdapter<Teacher> arrayAdapter1 = new ArrayAdapter<Teacher>(SubjectListActivity.this, R.layout.support_simple_spinner_dropdown_item, teacherList);
-            name.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            line1.addView(_name);
-            line1.addView(name);
+            LinearLayout line2 = new LinearLayout(this);
+            TextView _number = new TextView(this);
+            TextView _date = new TextView(this);
+            final EditText number = new EditText(this);
+            final DatePicker datePicker = new DatePicker(this);
+            _number.setText("Note");
+            _number.setPadding(30, 0, 20, 0);
+            _number.setMinWidth(450);
+            number.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+            line1.addView(_number);
+            line1.addView(number);
+            line2.addView(_date);
+            line2.addView(datePicker);
             container.setOrientation(LinearLayout.VERTICAL);
             container.setPadding(10, 10, 10, 10);
             container.addView(spinner);
             container.addView(line1);
-            AlertDialog.Builder builder = new AlertDialog.Builder(SubjectListActivity.this)
+            container.addView(line2);
+            AlertDialog.Builder builder = new AlertDialog.Builder(GradeListActivity.this)
                     .setView(container)
                     .setTitle("Bearbeiten")
                     .setMessage("Welchen Eintrag wollen sie bearbeiten?")
                     .setPositiveButton("Speichern", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            subject = (Subject) spinner.getSelectedItem();
-                            newName = name.getText().toString();
+
                             updateAdapter.execute();
                             refresh();
                         }
@@ -142,9 +151,7 @@ public class SubjectListActivity extends AppCompatActivity {
 
     private void refresh() {
         finish();
-        Intent i = new Intent(this, SubjectListActivity.class);
+        Intent i = new Intent(this, GradeListActivity.class);
         startActivity(i);
     }
-
-
 }

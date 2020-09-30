@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SubjectListActivity"></activity>
+        <activity android:name=".Activities.GradeListActivity"></activity>
+        <activity android:name=".Activities.CreateGradeActivity" />
+        <activity android:name=".Activities.GradeOptionsActivity" />
+        <activity android:name=".Activities.SubjectListActivity" />
         <activity android:name=".Activities.CreateSubjectActivity" />
         <activity
             android:name=".Activities.SubjectOptionsActivity"

@@ -8,21 +8,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import ch.sowatec.pg.notenapp.R;
 
-public class SubjectOptionsActivity extends AppCompatActivity {
+public class GradeOptionsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_subject_options);
+        setContentView(R.layout.activity_grade_options);
     }
 
-    public void buttonactionStartAddFach(View view) {
-        Intent i = new Intent(this, CreateSubjectActivity.class);
+    public void buttonactionStartAddNote(View view) {
+        Intent i = new Intent(this, CreateGradeActivity.class);
         startActivity(i);
     }
 
-    public void buttonactionStartViewFach(View view) {
-        Intent i = new Intent(this, SubjectListActivity.class);
+    public void buttonactionStartViewNote(View view) {
+        Intent i = new Intent(this, GradeListActivity.class);
         startActivity(i);
     }
 

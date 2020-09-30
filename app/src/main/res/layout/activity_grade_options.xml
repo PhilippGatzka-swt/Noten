@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.GradeOptionsActivity">
+
+    <ImageButton
+        android:id="@+id/button_add"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/noten_hinzufuegen"
+        android:onClick="buttonactionStartAddNote"
+        android:padding="3dp"
+        android:src="@drawable/icon_add"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_list"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/noten_anzeigen"
+        android:onClick="buttonactionStartViewNote"
+        android:padding="3dp"
+        android:src="@drawable/icon_listview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/button_export"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/exportieren"
+        android:onClick="buttonactionStartExport"
+        android:padding="3dp"
+        android:src="@drawable/icon_export"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_add" />
+
+    <ImageButton
+        android:id="@+id/button_import"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#FFFFFF"
+        android:contentDescription="@string/importieren"
+        android:onClick="buttonactionStartImport"
+        android:padding="3dp"
+        android:src="@drawable/icon_import"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

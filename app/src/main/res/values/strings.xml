@@ -15,4 +15,9 @@
     <string name="bearbeiten">Bearbeiten</string>
     <string name="fach">Fach</string>
     <string name="lehrperson">Lehrperson</string>
+    <string name="noten_hinzufuegen">Noten hinzufügen</string>
+    <string name="noten_anzeigen">Noten anzeigen</string>
+    <string name="note">Note</string>
+    <string name="datumm">Datum</string>
+    <string name="datum">Datum</string>
 </resources>

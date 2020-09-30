@@ -22,7 +22,8 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void buttonactionStartNoten(View view) {
-
+        Intent i = new Intent(this, GradeOptionsActivity.class);
+        startActivity(i);
     }
 
     public void buttonactionStartLehrpersonen(View view) {
