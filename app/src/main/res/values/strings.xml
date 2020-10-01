@@ -20,4 +20,5 @@
     <string name="note">Note</string>
     <string name="datumm">Datum</string>
     <string name="datum">Datum</string>
+    <string name="email">Email</string>
 </resources>

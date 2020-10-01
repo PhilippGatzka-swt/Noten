@@ -23,7 +23,7 @@ public class Grade {
         this.date = date;
     }
 
-    private String getDate() {
+    public String getDate() {
         String[] x = date.split("¢");
         return x[2] + "." + x[1] + "." + x[0];
     }
@@ -32,6 +32,6 @@ public class Grade {
     @NonNull
     @Override
     public String toString() {
-        return subject + " " + grade + " " + getDate();
+        return grade + " " + subject + " " + getDate();
     }
 }

@@ -139,14 +139,39 @@ public class GradeListActivity extends AppCompatActivity {
                     .setPositiveButton("Speichern", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-
+                            grade = (Grade) spinner.getSelectedItem();
+                            date = datePicker.getYear() + "¢" + datePicker.getMonth() + "¢" + datePicker.getDayOfMonth();
+                            note = Float.parseFloat(number.getText().toString());
                             updateAdapter.execute();
                             refresh();
                         }
                     });
             builder.create().show();
+        } else if (item.getItemId() == R.id.item_email) {
+            AlertDialog alertDialog = new AlertDialog.Builder(GradeListActivity.this)
+                    .setTitle("Email")
+                    .setMessage("Welche Note wollen sie verschicken?")
+                    .setView(spinner)
+                    .setPositiveButton("Mail", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Grade g = (Grade) spinner.getSelectedItem();
+                            Intent intent = new Intent(Intent.ACTION_SEND);
+                            intent.setType("message/rfc822");
+                            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"peter@sowatec.com"});
+                            intent.putExtra(Intent.EXTRA_SUBJECT, "gatzka58@gmail.com");
+                            String extraText = "Hallo Kai \n Ich habe gerade eine neue Note eingetragen:\n\n";
+                            String greetings = "\n\nLiebe Grüsse \n Philipp Gatzka";
+                            intent.putExtra(Intent.EXTRA_TEXT, extraText + "Note: " + g.grade + "\nFach: " + g.subject.name + "\nDatum: " + g.getDate() + greetings);
+                            intent.setPackage("com.google.android.gm");
+                            startActivity(intent);
+                        }
+                    })
+                    .create();
+            alertDialog.show();
         }
         return super.onOptionsItemSelected(item);
+
     }
 
     private void refresh() {

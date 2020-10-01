@@ -10,4 +10,8 @@
         android:id="@+id/item_edit"
         android:title="@string/bearbeiten"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/item_email"
+        android:title="@string/email"
+        app:showAsAction="never" />
 </menu>
